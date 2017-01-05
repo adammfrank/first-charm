@@ -1,0 +1,29 @@
+#!/bin/bash
+set -eu
+install_root=`config-get install_root`
+app_dir="$install_root/buses"
+app_user=`config-get app_user`
+app_url=`config-get app_url`
+
+sudo apt-get install -y git-all
+
+install_node() {
+  juju-log "Installing node..."
+ add-apt-repository ppa:chris-lea/node.js
+  apt-get update
+  apt-get -y install -qq nodejs build-essential curl
+  
+}
+[[ -x /usr/bin/node ]] || install_node
+
+
+install_application() {
+    juju-log "Instaling application..."
+    git clone ${app_url} ${app_dir}
+    if [ -f ${app_dir}/tricorder_app/package.json ]; then
+    cd ${app_dir}/tricorder_app && npm install
+    fi
+    juju-log "Done installing application..."
+}
+
+[[ -d ${app_dir} ]] || install_application

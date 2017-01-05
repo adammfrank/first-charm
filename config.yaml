@@ -1,0 +1,17 @@
+options:
+  install_root:
+    type: string
+    default: /opt
+    description: Install the application under this directory.
+  app_user:
+    type: string
+    default: ubuntu
+    description: run-as user
+  app_url:
+    type: string
+    default: https://github.com/adammfrank/edinburgh-bus-tracker.git
+    description: Application repository url
+  app_name:
+    type: string
+    default: buses
+    description: The name of the app.

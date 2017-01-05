@@ -1,0 +1,4 @@
+#!/bin/bash
+juju-log "Starting app..."
+cd /opt/buses/tricorder_app
+npm start

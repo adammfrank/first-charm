@@ -1,0 +1,13 @@
+name: buses
+summary: A bus tracker for buses in Edinburgh.
+maintainer: Adam Frank <adam.michael.frank@gmail.com>
+description: |
+  This node app tracks all of the buses in Edinburgh.
+tags: 
+  - social
+provides:
+  website: 
+    interface: http
+requires:
+  database:
+    interface: mongodb
